@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fullstack.semana2.dto.PeliculasResponseDTO;
 import com.fullstack.semana2.service.interfaces.IPeliculasService;
 
 @RestController
-@RequestMapping("/Peliculas")
+@RequestMapping("/peliculas")
 public class PeliculasController {
     
     private final IPeliculasService _service;
@@ -28,8 +28,8 @@ public class PeliculasController {
 
     }
 
-    @GetMapping("/")
-    public ResponseEntity<PeliculasResponseDTO> getById(@RequestParam int id){
+    @GetMapping("/{id}")
+    public ResponseEntity<PeliculasResponseDTO> getById(@PathVariable int id){
         
         return ResponseEntity.ok(_service.getById(id));
 
